@@ -15,11 +15,11 @@ export default function MovieListItem(props) {
 
   const handleAddOnClick = () => {
     handleAddToList({
-      title,
-      year,
-      type,
+      Title: title,
+      Year: year,
+      Type: type,
       imdbID,
-      poster,
+      Poster: poster,
     });
   };
 
