@@ -10,8 +10,12 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import MovieIcon from "@mui/icons-material/Movie";
+import { NavLink } from "react-router-dom";
 
-const pages = ["Search Movies", "Saved Movies"];
+const pages = [
+  { name: "Search Movies", path: "/" },
+  { name: "Saved Movies", path: "/saved-movies" },
+];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -75,8 +79,13 @@ function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  component={NavLink}
+                  key={page.path}
+                  onClick={handleCloseNavMenu}
+                  to={page.path}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -101,11 +110,13 @@ function NavBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                component={NavLink}
+                key={page.path}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                to={page.path}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
