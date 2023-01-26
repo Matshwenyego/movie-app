@@ -11,7 +11,17 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import { IconButton } from "@mui/material";
 
 export default function MovieListItem(props) {
-  const { title, year, type, imdbID, poster, action } = props;
+  const { title, year, type, imdbID, poster, action, handleAddToList } = props;
+
+  const handleAddOnClick = () => {
+    handleAddToList({
+      title,
+      year,
+      type,
+      imdbID,
+      poster,
+    });
+  };
 
   return (
     <Card sx={{ display: "flex" }}>
@@ -44,7 +54,7 @@ export default function MovieListItem(props) {
           }}
         >
           <Tooltip title="Add to List">
-            <IconButton aria-label="bookmark">
+            <IconButton onClick={handleAddOnClick} aria-label="bookmark">
               <BookmarkBorderIcon />
             </IconButton>
           </Tooltip>

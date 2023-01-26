@@ -3,7 +3,7 @@ import { Grid, Container } from "@mui/material";
 import MovieListItem from "./MovieListItem";
 
 export default function MovieList(props) {
-  const { data = [] } = props;
+  const { data = [], handleAddToList } = props;
   return (
     <Container maxWidth="xl" sx={{ pt: 2 }}>
       <Grid container spacing={2}>
@@ -24,6 +24,7 @@ export default function MovieList(props) {
                 imdbID={item.imdbID}
                 poster={item.Poster}
                 type={item.Type}
+                handleAddToList={handleAddToList}
               />
             </Grid>
           );

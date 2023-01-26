@@ -3,7 +3,8 @@ import { get } from "../services";
 import MovieFilters from "../components/MovieFilters";
 import MovieList from "../components/MovieList";
 
-export default function SearchMovies() {
+export default function SearchMovies(props) {
+  const { handleAddToList } = props;
   const [movies, setMovies] = useState([]);
 
   const handleSearchMovies = async (queries) => {
@@ -18,7 +19,7 @@ export default function SearchMovies() {
   return (
     <div>
       <MovieFilters handleSearchMovies={handleSearchMovies} />
-      <MovieList data={movies} />
+      <MovieList data={movies} handleAddToList={handleAddToList} />
     </div>
   );
 }
