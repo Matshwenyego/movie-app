@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { get } from "../services";
 import MovieFilters from "../components/MovieFilters";
+import MovieList from "../components/MovieList";
 
 export default function SearchMovies() {
   const [movies, setMovies] = useState([]);
@@ -17,6 +18,7 @@ export default function SearchMovies() {
   return (
     <div>
       <MovieFilters handleSearchMovies={handleSearchMovies} />
+      <MovieList data={movies} />
     </div>
   );
 }

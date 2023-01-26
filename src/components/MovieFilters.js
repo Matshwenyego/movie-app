@@ -16,7 +16,7 @@ export default function MovieFilters(props) {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ pb: 2 }}>
+    <Container maxWidth="xl" sx={{ pt: 2 }}>
       <Box
         component={"form"}
         sx={{ display: "flex", alignItems: "flex-end" }}
