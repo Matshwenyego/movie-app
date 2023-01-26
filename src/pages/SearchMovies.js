@@ -4,7 +4,7 @@ import MovieFilters from "../components/MovieFilters";
 import MovieList from "../components/MovieList";
 
 export default function SearchMovies(props) {
-  const { handleAddToList } = props;
+  const { handleAddToList, savedMoviesMap, handleRemoveFromList } = props;
   const [movies, setMovies] = useState([]);
 
   const handleSearchMovies = async (queries) => {
@@ -19,7 +19,12 @@ export default function SearchMovies(props) {
   return (
     <div>
       <MovieFilters handleSearchMovies={handleSearchMovies} />
-      <MovieList data={movies} handleAddToList={handleAddToList} />
+      <MovieList
+        data={movies}
+        handleAddToList={handleAddToList}
+        savedMoviesMap={savedMoviesMap}
+        handleRemoveFromList={handleRemoveFromList}
+      />
     </div>
   );
 }

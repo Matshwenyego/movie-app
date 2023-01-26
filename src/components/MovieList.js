@@ -3,11 +3,17 @@ import { Grid, Container } from "@mui/material";
 import MovieListItem from "./MovieListItem";
 
 export default function MovieList(props) {
-  const { data = [], handleAddToList } = props;
+  const {
+    data = [],
+    handleAddToList,
+    savedMoviesMap = {},
+    handleRemoveFromList,
+  } = props;
   return (
     <Container maxWidth="xl" sx={{ pt: 2 }}>
       <Grid container spacing={2}>
         {data.map((item, index) => {
+          const addedToList = savedMoviesMap[item.imdbID] ? true : false;
           return (
             <Grid
               item
@@ -25,6 +31,8 @@ export default function MovieList(props) {
                 poster={item.Poster}
                 type={item.Type}
                 handleAddToList={handleAddToList}
+                action={addedToList ? "remove" : "add"}
+                handleRemoveFromList={handleRemoveFromList}
               />
             </Grid>
           );
