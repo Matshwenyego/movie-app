@@ -9,9 +9,7 @@ export default function SearchMovies(props) {
 
   const handleSearchMovies = async (queries) => {
     const { s } = queries;
-    const response = get(
-      `${process.env.REACT_APP_BASE_URL}/?s=${s}&apikey=${process.env.REACT_APP_API_KEY}`
-    );
+    const response = get(`/movies?s=${s}`);
     const { Search } = await response;
     setMovies(Search);
   };

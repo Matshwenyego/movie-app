@@ -6,7 +6,6 @@ const axios = require("axios");
 const app = express();
 
 require("dotenv").config();
-const omdbApiKey = process.env.OMDB_API_KEY;
 
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/hello", function (req, res) {
@@ -16,7 +15,7 @@ app.get("/movies", async function (req, res) {
   const { s } = req.query;
   try {
     const { data } = await axios.get(
-      `https://www.omdbapi.com/?s=${s}&apikey=${omdbApiKey}`
+      `${process.env.BASE_URL}/?s=${s}&apikey=${process.env.OMDB_API_KEY}`
     );
     res.send(data);
   } catch (error) {
